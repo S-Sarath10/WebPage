@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const username = 'S-Sarath10';
+    const username = 's-sarath10';
     const repoContainer = document.getElementById('repo-container');
 
     if (!repoContainer) {
