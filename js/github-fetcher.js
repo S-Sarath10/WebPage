@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const username = 's-sarath10';
+    const username = 's-sarath10'; // Make sure this is your correct username
     const repoContainer = document.getElementById('repo-container');
 
     if (!repoContainer) {
@@ -19,13 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Clear the 'Loading...' message
             repoContainer.innerHTML = ''; 
 
-            if (repos.length === 0) {
-                repoContainer.innerHTML = '<p class="text-center">No public repositories found.</p>';
+            // --- NEW ---
+            // Filter out forked repositories
+            const myRepos = repos.filter(repo => repo.fork === false);
+            // --- END NEW ---
+
+            if (myRepos.length === 0) { // <-- Changed to check 'myRepos'
+                repoContainer.innerHTML = '<p class="text-center">No public, non-forked repositories found.</p>';
                 return;
             }
 
             // Create a card for each repository
-            repos.forEach(repo => {
+            myRepos.forEach(repo => { // <-- Changed to iterate over 'myRepos'
                 const repoCard = document.createElement('div');
                 repoCard.className = 'repo-card';
 
